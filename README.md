@@ -146,10 +146,11 @@ terraform apply
 ```
 Next, update the _main.tf_ file so that the terraform block looks like the following. Fill in your _GCP Project ID_ for the bucket argument definition.
 ```
+
 terraform {
   backend "gcs" {
-    bucket  = "<FILL IN PROJECT ID>"
- prefix  = "terraform/state"
+    bucket  = "tf-bucket-166207"
+  prefix  = "terraform/state"
   }
   required_providers {
     google = {
@@ -157,6 +158,20 @@ terraform {
       version = "3.55.0"
     }
   }
+}
+
+provider "google" {
+  project     = var.project_id
+  region      = var.region
+  zone        = var.zone
+}
+
+module "instances" {
+  source     = "./modules/instances"
+}
+
+module "storage" {
+  source     = "./modules/storage"
 }
 ```
 Run the following to initialize the remote backend. Type _yes_ at the prompt.
