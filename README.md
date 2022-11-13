@@ -26,15 +26,15 @@ cd
 Add the following to the each _variables.tf_ file, and fill in the _GCP Project ID_:
 ```
 variable "region" {
- default = "us-central1"
+ default = "us-east1"
 }
 
 variable "zone" {
- default = "us-central1-a"
+ default = "us-east1-d"
 }
 
 variable "project_id" {
- default = "<FILL IN PROJECT ID>"
+ default = "qwiklabs-gcp-02-1b9b69c7055e"
 }
 ```
 Add the following to the _main.tf_ file:
